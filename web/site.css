@@ -34,3 +34,11 @@ a:focus-visible, select:focus-visible, button:focus-visible, textarea:focus-visi
 #diagram[data-theme="dark"] .error { color: #ffaaa1; }
 @media (max-width: 760px) { .panes { grid-template-columns: 1fr; height: auto; } .panes textarea { min-height: 40vh; } #diagram { min-height: 40vh; } }
 @media (max-width: 650px) { header, main, footer { padding: 10px 14px; } .brand span { display: none; } }
+
+/* Run instructions */
+.run { margin-top: 20px; padding-top: 4px; border-top: 1px solid #303642; }
+.run h2 { font-size: 15px; margin: 12px 0 4px; }
+.run p { color: #a9b5c5; font-size: 13px; line-height: 1.6; margin: 8px 0; }
+.run pre { overflow-x: auto; margin: 8px 0 12px; padding: 10px 12px; border: 1px solid #333c4b; border-radius: 6px; background: #1a202a; }
+.run code { font: 13px/1.5 ui-monospace, Menlo, monospace; color: #e4e8ee; }
+.playground #help { color: #a9b5c5; font-size: 13px; line-height: 1.6; }

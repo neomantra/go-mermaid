@@ -26,6 +26,22 @@
       <section id="diagram" aria-label="Rendered diagram" aria-live="polite"></section>
     </div>
     <p id="status" role="status">Loading WebAssembly…</p>
+    <p id="help">Type Mermaid on the left; the diagram redraws as you type. Pick a sample from Example, a palette from Theme, and save the result with Download SVG. If the source does not parse, the error names its line and column.</p>
+    <section class="run" aria-labelledby="run-title">
+      <h2 id="run-title">Run it yourself</h2>
+      <p>Render diagrams from Go, with no browser or Node:</p>
+<pre><code>go get github.com/zkrebbekx/go-mermaid
+
+svg, err := mermaid.Render("flowchart LR\n  A --> B", mermaid.WithTheme(mermaid.Dark))</code></pre>
+      <p>Or from the command line, as SVG or PNG:</p>
+<pre><code>go install github.com/zkrebbekx/go-mermaid/cmd/mermaid@latest
+mermaid -o diagram.svg diagram.mmd
+mermaid -png -scale 2 -theme dark -o diagram.png diagram.mmd</code></pre>
+      <p>To run this site locally (needs Go 1.26.8 or newer and Python 3):</p>
+<pre><code>git clone https://github.com/neomantra/go-mermaid
+cd go-mermaid
+make serve-site   # http://localhost:8000/</code></pre>
+    </section>
   </main>
   <footer>The diagram is drawn by go-mermaid running as WebAssembly in your browser; nothing is sent to a server. <a href="LICENSE">Code license</a> · <a href="THIRD_PARTY_NOTICES.md">Dependency licenses</a></footer>
   <script src="wasm_exec.js"></script>

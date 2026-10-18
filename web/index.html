@@ -18,7 +18,17 @@
       <div id="controls" role="group" aria-label="Terminal controls"></div>
       <div class="terminal-frame"><div id="terminal"></div></div>
       <p id="status" role="status">Starting terminal…</p>
-      <p id="help">Type to edit · Ctrl+N next example · Ctrl+T theme · Ctrl+G Kitty or glyph graphics. Click the terminal to focus.</p>
+      <p id="help">Click the terminal and type to edit; the diagram redraws as you type. The buttons send the program's own keys: Next example (Ctrl+N), Theme (Ctrl+T), and Graphics (Ctrl+G, Kitty images or colored half blocks). More shows every key, including Quit (Ctrl+C); Keyboard focuses the terminal. The same keys are listed on the terminal's bottom line.</p>
+    </section>
+    <section class="run" aria-labelledby="run-title">
+      <h2 id="run-title">Run it in your terminal</h2>
+      <p>The editor is an ordinary Bubble Tea program. In Kitty, Ghostty, or WezTerm it draws with Kitty graphics; anywhere else, with colored half blocks. It needs Go 1.26.8 or newer:</p>
+<pre><code>git clone https://github.com/neomantra/go-mermaid
+cd go-mermaid
+GOWORK=off go -C examples run ./editor</code></pre>
+      <p>To build and serve this site locally (also needs Python 3):</p>
+<pre><code>make serve-site   # http://localhost:8000/</code></pre>
+      <p>To render diagrams from your own Go code, see the <a href="playground.html#run-title">SVG playground</a>.</p>
     </section>
   </main>
   <footer>Runs entirely in your browser: no server renders anything. Powered by <a href="https://github.com/NimbleMarkets/go-booba">booba</a>, ghostty-web and <a href="https://github.com/NimbleTerminal/ntpicture">ntpicture</a>. <a href="LICENSE">Code license</a> · <a href="THIRD_PARTY_NOTICES.md">Dependency licenses</a></footer>
