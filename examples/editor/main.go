@@ -111,7 +111,30 @@ func (m *model) layout() tea.Cmd {
 	w, h := m.panes()
 	m.editor.SetWidth(w.editorWidth)
 	m.editor.SetHeight(w.editorHeight)
+	m.unscroll()
 	return m.pic.SetSize(h.width, h.height)
+}
+
+// unscroll shows the source from its first line, keeping the cursor in view.
+// A text area that grows keeps the scroll offset it needed when it was small;
+// browser terminals start small and then fit the page, which would otherwise
+// leave the top of the source scrolled away.
+func (m *model) unscroll() {
+	row, col := m.editor.Line(), m.editor.Column()
+	m.editor.MoveToBegin()
+	// CursorDown moves one wrapped row at a time; stop if it cannot advance.
+	for range 1 << 16 {
+		if m.editor.Line() >= row {
+			break
+		}
+		before := m.editor.LineInfo()
+		line := m.editor.Line()
+		m.editor.CursorDown()
+		if m.editor.Line() == line && m.editor.LineInfo() == before {
+			break
+		}
+	}
+	m.editor.SetCursorColumn(col)
 }
 
 type editorSize struct{ editorWidth, editorHeight int }

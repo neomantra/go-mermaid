@@ -76,6 +76,30 @@ func TestEditorLayoutStacksWhenNarrow(t *testing.T) {
 	}
 }
 
+// Browser terminals report a small size first, then fit the page.
+func TestEditorShowsSourceFromTopAfterGrowing(t *testing.T) {
+	m := newModel()
+	m.Update(tea.WindowSizeMsg{Width: 120, Height: 5})
+	m.editor.View() // The viewport learns its content, and scrolls, when drawn.
+	m.editor.CursorUp()
+	m.editor.CursorDown()
+	m.editor.View()
+	if m.editor.ScrollYOffset() == 0 {
+		t.Fatal("setup: a one-row editor should have scrolled to the cursor")
+	}
+	row, col := m.editor.Line(), m.editor.Column()
+	m.Update(tea.WindowSizeMsg{Width: 120, Height: 40})
+	if got := m.editor.ScrollYOffset(); got != 0 {
+		t.Fatalf("scroll offset = %d after growing, want 0", got)
+	}
+	if m.editor.Line() != row || m.editor.Column() != col {
+		t.Fatalf("cursor moved to %d:%d, want %d:%d", m.editor.Line(), m.editor.Column(), row, col)
+	}
+	if v := m.View().Content; !strings.Contains(v, "flowchart LR") {
+		t.Fatal("the first line of source should be visible")
+	}
+}
+
 type testError string
 
 func (e testError) Error() string { return string(e) }
