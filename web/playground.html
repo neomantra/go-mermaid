@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>SVG playground · go-mermaid</title>
+  <link rel="stylesheet" href="site.css">
+</head>
+<body>
+  <header><a class="brand" href="./">go-mermaid<span>Mermaid diagrams in pure Go.</span></a><a href="https://github.com/zkrebbekx/go-mermaid">Source ↗</a></header>
+  <main class="playground">
+    <nav aria-label="Demos">
+      <a href="./"><strong>Terminal editor</strong><span>Edit Mermaid on the left and watch the diagram redraw on the right, in a terminal running in your browser.</span></a>
+      <a href="playground.html" aria-current="page"><strong>SVG playground</strong><span>The library compiled to WebAssembly, rendering SVG straight into the page. Download what you draw.</span></a>
+    </nav>
+    <div class="toolbar">
+      <h1>SVG playground</h1>
+      <div>
+        <label>Example<select id="example"></select></label>
+        <label>Theme<select id="theme"></select></label>
+        <button id="download" type="button">Download SVG</button>
+      </div>
+    </div>
+    <div class="panes">
+      <textarea id="source" spellcheck="false" aria-label="Mermaid source"></textarea>
+      <section id="diagram" aria-label="Rendered diagram" aria-live="polite"></section>
+    </div>
+    <p id="status" role="status">Loading WebAssembly…</p>
+  </main>
+  <footer>The diagram is drawn by go-mermaid running as WebAssembly in your browser; nothing is sent to a server. <a href="LICENSE">Code license</a> · <a href="THIRD_PARTY_NOTICES.md">Dependency licenses</a></footer>
+  <script src="wasm_exec.js"></script>
+  <script type="module" src="playground.js"></script>
+</body>
+</html>

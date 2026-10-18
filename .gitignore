@@ -24,3 +24,11 @@ testdata/fuzz/
 .idea/
 .vscode/
 .DS_Store
+
+# Generated demo site (make wasm-site)
+web/demos/
+web/booba/
+web/ghostty-web/
+web/wasm_exec.js
+web/LICENSE
+web/THIRD_PARTY_NOTICES.md

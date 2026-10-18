@@ -1,0 +1,15 @@
+// Browser demo builds use this workspace: the library plus the separate
+// examples module, with the Bubble Tea and clipboard forks that js/wasm needs.
+// Native builds and the library's own go.mod use upstream dependencies.
+go 1.26.8
+
+toolchain go1.27.2
+
+use (
+	.
+	./examples
+)
+
+replace charm.land/bubbletea/v2 => github.com/neomantra/bubbletea/v2 v2.0.0-20261009201241-c397c32a5074
+
+replace github.com/atotto/clipboard => github.com/neomantra/clipboard v0.0.0-20260506203444-114abb315f8d

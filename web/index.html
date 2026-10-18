@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>go-mermaid · Mermaid diagrams in pure Go</title>
+  <link rel="stylesheet" href="site.css">
+</head>
+<body>
+  <header><a class="brand" href="./">go-mermaid<span>Mermaid diagrams in pure Go.</span></a><a href="https://github.com/zkrebbekx/go-mermaid">Source ↗</a></header>
+  <main>
+    <nav aria-label="Demos">
+      <a href="./" aria-current="page"><strong>Terminal editor</strong><span>Edit Mermaid on the left and watch the diagram redraw on the right, in a terminal running in your browser.</span></a>
+      <a href="playground.html"><strong>SVG playground</strong><span>The library compiled to WebAssembly, rendering SVG straight into the page. Download what you draw.</span></a>
+    </nav>
+    <section class="demo" aria-label="Live terminal example">
+      <div class="toolbar"><h1>Terminal editor</h1><a href="./">Restart ↻</a></div>
+      <div id="controls" role="group" aria-label="Terminal controls"></div>
+      <div class="terminal-frame"><div id="terminal"></div></div>
+      <p id="status" role="status">Starting terminal…</p>
+      <p id="help">Type to edit · Ctrl+N next example · Ctrl+T theme · Ctrl+G Kitty or glyph graphics. Click the terminal to focus.</p>
+    </section>
+  </main>
+  <footer>Runs entirely in your browser: no server renders anything. Powered by <a href="https://github.com/NimbleMarkets/go-booba">booba</a>, ghostty-web and <a href="https://github.com/NimbleTerminal/ntpicture">ntpicture</a>. <a href="LICENSE">Code license</a> · <a href="THIRD_PARTY_NOTICES.md">Dependency licenses</a></footer>
+  <script src="wasm_exec.js"></script>
+  <script type="module" src="site.js"></script>
+</body>
+</html>
