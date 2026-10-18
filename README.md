@@ -33,6 +33,31 @@ diagram it came from.
 | --- | --- | --- |
 | ![gantt](docs/gallery/gantt.png) | ![gitgraph](docs/gallery/gitgraph.png) | ![mindmap](docs/gallery/mindmap.png) |
 
+## Try it in the browser
+
+Because go-mermaid is pure Go, it compiles to WebAssembly unchanged. The demo
+site in [`web/`](web) has two pages, and neither sends anything to a server:
+
+- **Terminal editor:** a [Bubble Tea](https://github.com/charmbracelet/bubbletea)
+  program that edits Mermaid on the left and redraws the diagram on the right.
+  It runs in a browser terminal through
+  [booba](https://github.com/NimbleMarkets/go-booba), and natively with
+  `GOWORK=off go -C examples run ./editor`: as Kitty graphics where the
+  terminal supports them, and as colored half blocks anywhere else.
+- **SVG playground:** the library itself as WebAssembly, rendering SVG straight
+  into the page, with every built-in theme and an SVG download.
+
+```sh
+make serve-site   # build both demos and serve them at http://localhost:8000/
+make check-site   # drive both demos under Node
+```
+
+The demos live in the separate [`examples`](examples) module, so their UI
+dependencies never reach the library's `go.mod`. Browser builds use
+`wasm.work`, which joins both modules and selects the Bubble Tea and clipboard
+forks that js/wasm needs. The `Demo site` workflow builds and checks the site
+on every pull request and publishes it to GitHub Pages from `main`.
+
 ## Why
 
 Every existing Go path to Mermaid SVG shells out to headless Chrome or a Node
