@@ -28,7 +28,9 @@ try {
   assert.equal(typeof globalThis.bubbletea_read, 'function');
   bubbletea_resize(120, 40);
   await expectOutput(/go-mermaid/);
-  await expectOutput(/Drew \d+×\d+/);
+  // Bubble Tea redraws only changed cells: when "Drawing…" becomes "Drew …"
+  // the shared "Dr" is not resent, so match the part that always is.
+  await expectOutput(/\d+×\d+ in [\d.]+m?s/);
   // Negotiate the same program-status support as the browser action bar.
   bubbletea_write('\x1b]7501;?\x1b\\');
   const advertised = await expectOutput(/:msg=/);
